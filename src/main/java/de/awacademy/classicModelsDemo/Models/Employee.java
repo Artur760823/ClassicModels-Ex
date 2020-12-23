@@ -22,6 +22,10 @@ public class Employee {
     @JoinColumn(name = "officeCode", referencedColumnName = "officeCode")
     private Office office;
 
+    @ManyToOne
+    @JoinColumn(name = "fullAddress", referencedColumnName = "fullAddress")
+    private Office fullAddress;
+
     @OneToOne
     @JoinColumn(name = "reportsTo", referencedColumnName = "employeeNumber")
     private Employee boss;
@@ -93,6 +97,14 @@ public class Employee {
 
     public void setJobTitle(String jobTitle) {
         this.jobTitle = jobTitle;
+    }
+
+    public String getFullName() {
+        return firstName +" " + lastName;
+    }
+
+    public Office getFullAddress() {
+        return fullAddress;
     }
 
     @Override
